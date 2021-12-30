@@ -1,4 +1,5 @@
 #Task 1
+
 student@localhost ~]$ sudo ip addr add 192.168.2.3/24 dev enp0s8
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     inet 127.0.0.1/8 scope host lo
@@ -27,6 +28,7 @@ student@localhost ~]$ sudo ip addr add 192.168.2.3/24 dev enp0s8
 [student@localhost network-scripts]$ sudo vi ifcfg-enp0s8
 
 ## добавляем в конфиг
+
 TYPE="Ethernet"
 PROXY_METHOD="none"
 ONBOOT=yes
@@ -74,6 +76,7 @@ sudo nmcli dev modify enp0s8 ipv4.addresses 192.168.2.3/24
        valid_lft forever preferred_lft forever
        
 #Task 2
+
 Меняем конфиг для sshd и устанавливаем адрес 192.168.2.3, на виртуальной машине проброс порта с localhost на 192.168.2.3
 
 [student@localhost ~]$ sudo tcpdump -i enp0s8 -w /tmp/packets
@@ -81,11 +84,14 @@ sudo nmcli dev modify enp0s8 ipv4.addresses 192.168.2.3/24
 
 ![image](https://user-images.githubusercontent.com/95036373/147507829-ef3e57e5-1e4e-4ce0-ac82-f35efef94253.png)
 ## Флаг S
+
 #Task 3
 
 ![image](https://user-images.githubusercontent.com/95036373/147507665-ef924800-95dc-4961-8ab1-7316208d61d4.png)
+
 ## Почему то только флаг R, а не F
 
 #Task 4
+
 [student@localhost ~]$ sudo tcpdump -i any -A port 80 -w /tmp/packets &
 [student@localhost ~]$ curl http://info.cern.ch

@@ -11,7 +11,9 @@ student@localhost ~]$ sudo ip addr add 192.168.2.3/24 dev enp0s8
        valid_lft 86175sec preferred_lft 86175sec
     inet 192.168.2.3/24 scope global enp0s8
        valid_lft forever preferred_lft forever
+       
 [student@localhost ~]$ sudo ip addr del 192.168.2.3/24 dev enp0s8
+
 [student@localhost ~]$ ip -4 a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     inet 127.0.0.1/8 scope host lo
@@ -23,6 +25,7 @@ student@localhost ~]$ sudo ip addr add 192.168.2.3/24 dev enp0s8
     inet 10.0.3.15/24 brd 10.0.3.255 scope global noprefixroute dynamic enp0s8
        valid_lft 86049sec preferred_lft 86049sec
 [student@localhost network-scripts]$ sudo vi ifcfg-enp0s8
+
 ## добавляем в конфиг
 TYPE="Ethernet"
 PROXY_METHOD="none"
@@ -41,6 +44,7 @@ Authentication is required to manage system services or units.
 Authenticating as: student
 Password:
 ==== AUTHENTICATION COMPLETE ===
+
 [student@localhost network-scripts]$ ip -4 a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     inet 127.0.0.1/8 scope host lo
@@ -68,6 +72,7 @@ sudo nmcli dev modify enp0s8 ipv4.addresses 192.168.2.3/24
        valid_lft 84766sec preferred_lft 84766sec
     inet 192.168.2.3/24 brd 192.168.1.255 scope global noprefixroute enp0s8
        valid_lft forever preferred_lft forever
+       
 #Task 2
 Меняем конфиг для sshd и устанавливаем адрес 192.168.2.3, на виртуальной машине проброс порта с localhost на 192.168.2.3
 

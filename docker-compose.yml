@@ -2,7 +2,7 @@ version: '3'
 
 services:
   master:
-    image: headnode
+    image: romkur/headnode:latest
     container_name: "headnode"
     ports :
         - "9870:9870"
@@ -11,7 +11,7 @@ services:
         - namenode-data:/opt/namenode-dir
 
   slave:
-    image: worker
+    image: romkur/worker:latest
     container_name: "worker"
     volumes:
         - datanode-data:/opt/datanode-dir

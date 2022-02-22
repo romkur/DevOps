@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  master:
+    image: headnode
+    container_name: "headnode"
+    ports :
+        - "9870:9870"
+        - "8088:8088"
+    volumes:
+        - namenode-data:/opt/namenode-dir
+
+  slave:
+    image: worker
+    container_name: "worker"
+    volumes:
+        - datanode-data:/opt/datanode-dir
+        - nodemanager-local-data:/opt/nodemanager-local-dir
+        - nodemanager-log-data:/opt/nodemanager-log-dir
+volumes:
+  namenode-data:
+  datanode-data:
+  nodemanager-local-data:
+  nodemanager-log-data:
